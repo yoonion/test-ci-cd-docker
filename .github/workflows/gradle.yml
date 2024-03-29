@@ -50,6 +50,7 @@ jobs:
         host: ${{ secrets.EC2_HOST }} # EC2 인스턴스 퍼블릭 DNS
         username: ubuntu
         key: ${{ secrets.EC2_PRIVATE_KEY }} # pem 키
+        envs: GITHUB_SHA
         # 도커 작업
         script: |
           docker pull ${{ secrets.DOCKER_USERNAME }}/docker-test:latest
