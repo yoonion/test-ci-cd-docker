@@ -45,13 +45,13 @@ jobs:
 
     # EC2 배포
     - name: Deploy
-      uses: invi5H/ssh-action@v1.0.0
+      uses: tiyee/action-ssh@v1.0.1
       with:
-        SSH_HOST: ${{ secrets.EC2_HOST }} # EC2 인스턴스 퍼블릭 DNS
-        SSH_USER: ubuntu
-        SSH_KEY: ${{ secrets.EC2_PRIVATE_KEY }} # pem 키
+        host: ${{ secrets.EC2_HOST }} # EC2 인스턴스 퍼블릭 DNS
+        username: ubuntu
+        privateKey: ${{ secrets.EC2_PRIVATE_KEY }} # pem 키
         # 도커 작업
-        script: |
+        command: |
           sudo docker ps
           # sudo docker pull ${{ secrets.DOCKER_USERNAME }}/docker-test:latest
           # sudo docker stop $(docker ps -a -q)
