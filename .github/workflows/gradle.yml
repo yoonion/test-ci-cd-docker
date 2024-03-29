@@ -53,8 +53,8 @@ jobs:
         envs: GITHUB_SHA
         # 도커 작업
         script: |
-          docker pull ${{ secrets.DOCKER_USERNAME }}/docker-test:latest
-          docker stop $(docker ps -a -q)
-          docker run -d --log-driver=syslog -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/docker-test:latest
-          docker rm $(docker ps --filter 'status=exited' -a -q)
-          docker image prune -a -f
+          sudo docker pull ${{ secrets.DOCKER_USERNAME }}/docker-test:latest
+          sudo docker stop $(docker ps -a -q)
+          sudo docker run -d --log-driver=syslog -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/docker-test:latest
+          sudo docker rm $(docker ps --filter 'status=exited' -a -q)
+          sudo docker image prune -a -f
