@@ -54,6 +54,6 @@ jobs:
         script: |
           sudo docker pull ${{ secrets.DOCKER_USERNAME }}/docker-test:latest
           sudo docker stop $(sudo docker ps -a -q)
-          sudo docker run -d --log-driver=syslog -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/docker-test:latest
+          sudo docker run -d --log-driver=syslog -p 8070:8070 ${{ secrets.DOCKER_USERNAME }}/docker-test:latest
           sudo docker rm $(sudo docker ps --filter 'status=exited' -a -q)
           sudo docker image prune -a -f
